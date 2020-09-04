@@ -17,17 +17,14 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-//test starts
-Route::get('/assets/teacher/', function () {
-    return redirect('public');
-});
+//Test Start
 Route::get('/test', function () {
     return view('teacher.test');
 });
-Route::get('/header', function () {
-    return view('teacher.header');
+Route::get('/student-details', function () {
+    return view('teacher.student-details');
 });
-//test end
+//Test End
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@validation');

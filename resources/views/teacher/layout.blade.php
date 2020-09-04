@@ -393,13 +393,11 @@
             </ul>
           </div>
           <!-- Breadcubs Area End Here -->
-          <div class="row">
             <!-- Body Container Start Here -->
             <div class="bodyContainer">
               @yield('bodyContent')
             </div>
             <!-- Body Container End Here -->
-          </div>
 
           <footer class="footer-wrap-layout1"></footer>
         </div>
