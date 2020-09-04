@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
-  <meta
-    http-equiv="content-type"
-    content="text/html;charset=UTF-8"
-  />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <!-- Head Container Start Here -->
     <div class="headContainer">
       @yield('headContent')
     </div>
+    <!-- Head Container End Here -->
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/teacher/img/favicon.png" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/assets/teacher/img/favicon.png"
+    />
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="/assets/teacher/css/normalize.css" />
     <!-- Main CSS -->
@@ -26,6 +29,11 @@
     <link rel="stylesheet" href="/assets/teacher/fonts/flaticon.css" />
     <!-- Animate CSS -->
     <link rel="stylesheet" href="/assets/teacher/css/animate.min.css" />
+    <!-- Data Table CSS -->
+    <link
+      rel="stylesheet"
+      href="/assets/teacher/css/jquery.dataTables.min.css"
+    />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/teacher/style.css" />
     <!-- Modernize js -->
@@ -101,7 +109,7 @@
                 <div class="admin-title">
                   <h5 class="item-title">Teacher</h5>
                 </div>
-                <div class="/assets/teacher/admin-img">
+                <div class="admin-img">
                   <img src="/assets/teacher/img/figure/admin.jpg" alt="Admin" />
                 </div>
               </a>
@@ -112,19 +120,21 @@
                 <div class="item-content">
                   <ul class="settings-list">
                     <li>
-                      <a href="/teacher/teacher-profile"><i class="flaticon-user"></i>My Profile</a>
+                      <a href="/teacher/teacher-profile"
+                        ><i class="flaticon-user"></i>My Profile</a
+                      >
                     </li>
                     <li>
                       <a href="#"><i class="flaticon-list"></i>Task</a>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="#"
                         ><i
                           class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"
                         ></i
                         >Message</a
                       >
-                    </li>
+                    </li> -->
 
                     <li>
                       <a href="/logout"
@@ -372,27 +382,30 @@
         </div>
         <!-- Sidebar Area End Here -->
         <div class="dashboard-content-one">
-          <!-- Sidebar Area End Here -->
-          <div class="dashboard-content-one">
-            <!-- Breadcubs Area Start Here -->
-            <div class="breadcrumbs-area">
-                <ul>
-                    <li>
-                        <a href="index5">Home</a>
-                    </li>
-                    <li>Map</li>
-                </ul>
-            </div>
-            <!-- Breadcubs Area End Here -->
+          <!-- Breadcubs Area Start Here -->
+          <div class="breadcrumbs-area">
+            <h3>Teacher Dashboard</h3>
+            <ul>
+              <li>
+                <a href="/teacher/index5">Home</a>
+              </li>
+              <li>Teachers</li>
+            </ul>
+          </div>
+          <!-- Breadcubs Area End Here -->
+          <div class="row">
+            <!-- Body Container Start Here -->
             <div class="bodyContainer">
               @yield('bodyContent')
             </div>
+            <!-- Body Container End Here -->
+          </div>
+
           <footer class="footer-wrap-layout1"></footer>
         </div>
       </div>
       <!-- Page Area End Here -->
     </div>
-
     <!-- jquery-->
     <script src="/assets/teacher/js/jquery-3.3.1.min.js"></script>
     <!-- Plugins js -->
@@ -414,5 +427,4 @@
     <!-- Custom Js -->
     <script src="/assets/teacher/js/main.js"></script>
   </body>
-
 </html>

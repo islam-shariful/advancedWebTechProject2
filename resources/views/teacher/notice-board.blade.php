@@ -551,10 +551,10 @@
                     </div>
                   </form>
                   <div class="notice-board-wrap">
-                    @for($i=0; $i !=count($noticeList);$i++)
+                    @for($i=0; $i != count($noticeList);$i++)
                     <div class="notice-list">
                       <div class="post-date bg-skyblue">
-                         {{ $noticeList[$i]['noticedate '] }}
+                         {{ $noticeList[$i]['noticedate'] }}
                       </div>
                       <h6 class="notice-title">
                         <a href="#">{{ $noticeList[$i]['description'] }}</a>

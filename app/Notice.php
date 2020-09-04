@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notice extends Model
 {
-    protected $table = "teacher";
+    protected $table = "notice";
     public $timestamps = false;
     // const CREATED_AT = "create-time";
     // const UPDATED_AT = "Update_time";
