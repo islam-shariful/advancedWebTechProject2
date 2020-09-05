@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    protected $table = "message";
+    //protected $table = "message";
     public $timestamps = false;
     // const CREATED_AT = "create-time";
     // const UPDATED_AT = "Update_time";
