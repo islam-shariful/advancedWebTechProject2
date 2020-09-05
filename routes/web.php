@@ -21,26 +21,35 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('teacher.test');
 });
-Route::get('/student-details', function () {
-    return view('teacher.student-details');
-});
+// Route::get('/student-details', function () {
+//     return view('teacher.student-details');
+// });
 //Test End
 
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@validation');
-Route::get('/logout', 'LogoutController@index');
+Route::GET('/login', 'LoginController@index');
+Route::POST('/login', 'LoginController@validation');
+Route::GET('/logout', 'LogoutController@index');
 
 //Teacher routes start here
-Route::get('/teacher1', 'TeacherController@index');
-Route::get('/teacher/index5', 'TeacherController@index');
-Route::get('/teacher/teacher-profile', 'TeacherController@teacherProfile');
-Route::get('/teacher/class-routine', 'TeacherController@routine');
-Route::get('/teacher/all-student', 'TeacherController@allStudent');
-Route::get('/teacher/student-attendence', 'TeacherController@studentAttendence');
-Route::get('/teacher/exam-grade', 'TeacherController@examGrade');
-Route::get('/teacher/grade-sheet', 'TeacherController@gradeSheet');
-Route::get('/teacher/notice-board', 'TeacherController@noticeBoard');
-Route::get('/teacher/messaging', 'TeacherController@messaging');
-Route::get('/teacher/map', 'TeacherController@map');
-Route::get('/teacher/note-upload', 'TeacherController@noteUpload');
+Route::GET('/teacher1', 'TeacherController@index');
+Route::GET('/teacher/index5', 'TeacherController@index');
+Route::GET('/teacher/teacher-profile', 'TeacherController@teacherProfile');
+Route::GET('/teacher/class-routine', 'TeacherController@routine');
+Route::GET('/teacher/all-student', 'TeacherController@allStudent');
+Route::POST('/teacher/all-student', 'TeacherController@studentDetails');
+Route::GET('/teacher/student-attendence', 'TeacherController@studentAttendence');
+Route::GET('/teacher/exam-grade', 'TeacherController@examGrade');
+Route::POST('/teacher/exam-grade', 'TeacherController@examGradeAdd');
+Route::POST('/teacher/exam-gradeSearch', 'TeacherController@examGradeSearch');
+Route::GET('/teacher/exam-grade/edit/{result_id}', 'TeacherController@examGradeEdit');
+Route::POST('/teacher/exam-grade/edit/{result_id}', 'TeacherController@examGradeModify');
+Route::GET('/teacher/grade-sheet', 'TeacherController@gradeSheet');
+Route::POST('/teacher/grade-sheet', 'TeacherController@gradeSheetSearch');
+Route::GET('/teacher/notice-board', 'TeacherController@noticeBoard');
+Route::POST('/teacher/notice-board', 'TeacherController@noticeBoardAdd');
+Route::POST('/teacher/notice-boardSearch', 'TeacherController@noticeBoardSearch');
+Route::GET('/teacher/messaging', 'TeacherController@messaging');
+Route::POST('/teacher/messaging', 'TeacherController@messagingAdd');
+Route::GET('/teacher/map', 'TeacherController@map');
+Route::GET('/teacher/note-upload', 'TeacherController@noteUpload');
 //Teacher routes end here

@@ -40,6 +40,7 @@
             </div>
           </div>
           <form method="post" class="new-added-form">
+            @csrf
             <div class="row">
               <div class="col-12-xxxl col-lg-6 col-12 form-group">
                 <label>Notice ID</label>
@@ -140,12 +141,14 @@
               </div>
             </div>
           </div> -->
-          <form class="mg-b-20">
+          <form method='POST' action='/teacher/notice-boardSearch' class="mg-b-20">
+            @csrf
             <div class="row gutters-8">
               <div class="col-lg-5 col-12 form-group">
                 <input
+                name='class_id'
                   type="text"
-                  placeholder="Search by Class [Under Production]"
+                  placeholder="Search by Class"
                   class="form-control"
                 />
               </div>

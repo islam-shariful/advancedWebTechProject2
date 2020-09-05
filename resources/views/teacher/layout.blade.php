@@ -334,11 +334,11 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="/teacher/student-attendence" class="nav-link"
                   ><i class="flaticon-checklist"></i><span>Attendence</span></a
                 >
-              </li>
+              </li> -->
               <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"
                   ><i class="flaticon-shopping-list"></i><span>Exam</span></a
@@ -367,14 +367,14 @@
                 >
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="/teacher/map" class="nav-link"
                   ><i class="flaticon-planet-earth"></i><span>Map</span></a
                 >
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a href="/teacher/note-upload" class="nav-link"
-                  ><span>Upload Note</span></a
+                  ><i class="flaticon-checklist"></i><span>Upload Note</span></a
                 >
               </li>
             </ul>

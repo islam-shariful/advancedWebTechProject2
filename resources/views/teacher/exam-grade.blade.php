@@ -7,7 +7,16 @@
 @section('bodyContent')
     <div class="row">
       <form method="post" class="mg-b-20">
+        @csrf
         <div class="row gutters-8">
+          <div class="col-lg-4 col-12 form-group">
+            <input
+              name="result_id"
+              type="text"
+              placeholder="Result ID"
+              class="form-control"
+            />
+          </div>
           <div class="col-lg-4 col-12 form-group">
             <input
               name="class_id"
@@ -66,7 +75,7 @@
           </div>
           <div class="col-lg-3 col-12 form-group">
             <input
-              name="totalmarks"
+              name="total"
               type="text"
               placeholder="Total Marks"
               class="form-control"
@@ -114,12 +123,14 @@
               </div> -->
               </div>
             </div>
-            <form class="mg-b-20">
+            <form method='post' action='/teacher/exam-gradeSearch' class="mg-b-20">
+              @csrf
               <div class="row gutters-8">
                 <div class="col-lg-4 col-12 form-group">
                   <input
+                    name='student_id'
                     type="text"
-                    placeholder="Student ID [Under Production]"
+                    placeholder="Student ID"
                     class="form-control"
                   />
                 </div>
@@ -157,7 +168,7 @@
                           type="checkbox"
                           class="form-check-input checkAll"
                         />
-                        <label class="form-check-label">Grade ID</label>
+                        <label class="form-check-label">Result ID</label>
                       </div>
                     </th>
                     <th>Class ID</th>
@@ -168,6 +179,7 @@
                     <th>Mid Marks</th>
                     <th>Final Marks</th>
                     <th>Total Marks</th>
+                    <th>Actions</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -180,10 +192,11 @@
                     <th>{{ $resultList[$i]['section_id'] }}</th>
                     <th>{{ $resultList[$i]['subject_id'] }}</th>
                     <th>{{ $resultList[$i]['student_id'] }}</th>
-                    <th>{{ $resultList[$i]['attendance'] }}</th>
+                    <th>{{ $resultList[$i]['attendance'] }}%</th>
                     <th>{{ $resultList[$i]['midmarks'] }}</th>
                     <th>{{ $resultList[$i]['finalmarks'] }}</th>
                     <th>{{ $resultList[$i]['total'] }}</th>
+                    <th><a href="/teacher/exam-grade/edit/{{$resultList[$i]['result_id']}}">Edit Result</a></th>
                     <td>
                       <div class="dropdown">
                         <a

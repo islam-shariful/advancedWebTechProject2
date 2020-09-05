@@ -38,16 +38,16 @@
       </div>
       <div class="single-info-details">
         <div class="item-img">
-          <% if(studentgender=="male" || studentgender=="Male") { %>
+          @if($studentInfo->studentgender == "male" || $studentInfo->studentgender == "Male")
             <img src="/assets/teacher/img/figure/student1.png" alt="maleStudent" />
-          <% }else{%>
-            <img src="/assets/teacher/img/figure/student.png" alt="femaleStudent" />
-          <%}%>
+            @else
+              <img src="/assets/teacher/img/figure/student.png" alt="femaleStudent" />
+          @endif
 
         </div>
         <div class="item-content">
           <div class="header-inline item-header">
-            <h3 class="text-dark-medium font-medium"> <%= studentname %> </h3>
+            <h3 class="text-dark-medium font-medium">{{ $studentInfo->studentname }}</h3>
             <div class="header-elements">
               <ul>
                 <li>
@@ -77,57 +77,57 @@
                 <tr>
                   <td>ID:</td>
                   <td class="font-medium text-dark-medium">
-                    <%= student_id %>
+                    {{ $studentInfo->student_id }}
                   </td>
                 </tr>
                 <tr>
                   <td>Name:</td>
-                  <td class="font-medium text-dark-medium"><%= studentname %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentname }}</td>
                 </tr>
                 <tr>
                   <td>Class:</td>
-                  <td class="font-medium text-dark-medium"><%= class_id %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->class_id }}</td>
                 </tr>
                 <tr>
                   <td>Section:</td>
-                  <td class="font-medium text-dark-medium"><%= section_id %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->section_id }}</td>
                 </tr>
                 <tr>
                   <td>Gender:</td>
-                  <td class="font-medium text-dark-medium"><%= studentgender %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentgender }}</td>
                 </tr>
                 <tr>
                 <tr>
                   <td>Birth Date:</td>
-                  <td class="font-medium text-dark-medium"><%= studentdob %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentdob }}</td>
                 </tr>
                 <tr>
                   <td>father:</td>
-                  <td class="font-medium text-dark-medium"><%= studentfathername %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentfathername }}</td>
                 </tr>
                 <tr>
                   <td>Mother:</td>
-                  <td class="font-medium text-dark-medium"><%= studentmothername %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentmothername }}</td>
                 </tr>
                 <tr>
                   <td>Guardian Number:</td>
-                  <td class="font-medium text-dark-medium"><%= guardiannumber %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->guardiannumber }}</td>
                 </tr>
                 <tr>
                   <td>E-mail:</td>
                   <td class="font-medium text-dark-medium">
-                    <%= studentemail %>
+                    {{ $studentInfo->studentemail }}
                   </td>
                 </tr>
                 <tr>
                   <td>Address:</td>
                   <td class="font-medium text-dark-medium">
-                    <%= studentaddress %>
+                    {{ $studentInfo->studentaddress }}
                   </td>
                 </tr>
                 <tr>
                   <td>Religion:</td>
-                  <td class="font-medium text-dark-medium"><%= studentreligion %></td>
+                  <td class="font-medium text-dark-medium">{{ $studentInfo->studentreligion }}</td>
                 </tr>
               </tbody>
             </table>

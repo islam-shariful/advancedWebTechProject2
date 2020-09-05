@@ -26,6 +26,7 @@
             </div>
           </div>
           <form method="post" class="mg-b-20">
+            @csrf
             <div class="row gutters-8">
               <div class="col-lg-4 col-12 form-group">
                 <input

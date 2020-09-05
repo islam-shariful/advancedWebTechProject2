@@ -38,19 +38,21 @@
             </div>
           </div>
         </div>
-        <form class="new-added-form">
+        <form method='POST' class="new-added-form">
+          @csrf
           <div class="row">
             <div class="col-12 form-group">
               <label>Title</label>
-              <input type="text" placeholder="" class="form-control" />
+              <input name='title' type="text" placeholder="" class="form-control" />
             </div>
             <div class="col-12 form-group">
               <label>Recipient</label>
-              <input type="text" placeholder="" class="form-control" />
+              <input name='recipient' type="text" placeholder="" class="form-control" />
             </div>
             <div class="col-12 form-group">
               <label>Message</label>
               <textarea
+                name='message'
                 class="textarea form-control"
                 name="message"
                 id="form-message"
@@ -69,7 +71,7 @@
                 type="reset"
                 class="btn-fill-lg bg-blue-dark btn-hover-yellow"
               >
-                Reset
+                Reset[Under Production]
               </button>
             </div>
           </div>

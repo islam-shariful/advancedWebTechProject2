@@ -26,6 +26,7 @@
           </div>
           <div class="table-box-wrap">
             <form method="post" class="search-form-box">
+              @csrf
               <div class="row gutters-8">
                 <div
                   class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group"
