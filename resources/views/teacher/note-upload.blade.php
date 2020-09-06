@@ -6,50 +6,68 @@
 
 @section('bodyContent')
   <!-- Breadcubs Area End Here -->
-  <div class="row"></div>
-  <form
-    method="post"
-    enctype="multipart/form-data"
-  >
-  @csrf
-    <!-- <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddone1"
-          >Upload</span
-        >
-      </div>
-      <div class="custom-file">
-        <input
-          name="notes"
-          type="file"
-          class="custom-file-input"
-          id="inputGroupFile01"
-          aria-describedby="inputGroupFileAddon@1"
-        />
-        <label class="custom-file-label" for="inputGroupFile01"
-          >Choose Notes</label
-        >
-      </div>
-    </div> -->
-    <!-- Assignment & Note Upload Div Start -->
-    <div>
+  <div>
+    <form
+      method="post"
+      enctype="multipart/form-data"
+    >
+    @csrf
+      <!-- <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddone1"
+            >Upload</span
+          >
+        </div>
+        <div class="custom-file">
+          <input
+            name="notes"
+            type="file"
+            class="custom-file-input"
+            id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon@1"
+          />
+          <label class="custom-file-label" for="inputGroupFile01"
+            >Choose Notes</label
+          >
+        </div>
+      </div> -->
+      <!-- Assignment & Note Upload Div Start -->
       <div>
-        <label>Upload Assignment:</label>
-        <input type="file" name="uploadAssignment" />
-        {{session('assignmentUploadStatus')}}
+        <div>
+          <label>Class ID:</label>
+          <input type="text" name="class_id" placeholder="Class ID"/>
+          <label>Section ID:</label>
+          <input type="text" name="section_id" placeholder="Section ID"/>
+          <label>Subject ID:</label>
+          <input type="text" name="subject_id" placeholder="Subject ID"/>
+          </br></br>
+          <label>Assignment ID:</label>
+          <input type="text" name="assignment_id" placeholder="Assignment ID"/>
+          <label>Due Date:</label>
+          <input type="date" name="duedate" placeholder="Due Date"/>
+          </br></br>
+          <label>Note ID:</label>
+          <input type="text" name="note_id" placeholder="Note ID"/>
+
+
+        </div></br>
+        <div>
+          <label>Upload Assignment:</label>
+          <input type="file" name="uploadAssignment" />
+          {{session('assignmentUploadStatus')}}
+        </div>
+        <div>
+          <label>Upload Notes:</label>
+          <input type="file" name="uploadNote" />
+          {{session('noteUploadStatus')}}
+        </div>
+        <input type="submit" name="submit" value='Upload'/>
+        {{session('bothUploadStatus')}}
+        {{session('failedUploadStatus')}}
       </div>
-      <div>
-        <label>Upload Notes:</label>
-        <input type="file" name="uploadNote" />
-        {{session('noteUploadStatus')}}
-      </div>
-      <input type="submit" name="submit" value='Upload'/>
-      {{session('bothUploadStatus')}}
-      {{session('failedUploadStatus')}}
-    </div>
-    <!-- Assignment & Note Upload Div End -->
-  </form>
-  <div class="row">
+      <!-- Assignment & Note Upload Div End -->
+    </form>
+  </div></br>
     <!-- All Notice Area Start Here -->
     <div class="col-8-xxxl col-12">
       <div class="card height-auto">

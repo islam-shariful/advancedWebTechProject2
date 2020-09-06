@@ -11,6 +11,8 @@ use App\Routine;
 use App\Grade;
 use App\Result;
 use App\Message;
+use App\Assignment;
+use App\Note;
 
 class TeacherController extends Controller
 {
@@ -186,6 +188,29 @@ class TeacherController extends Controller
     if($request->hasfile('uploadAssignment') && $request->hasfile('uploadNote') ){
       $AssignmentFile =  $request->file('uploadAssignment');
       $noteFile       =  $request->file('uploadNote');
+
+      $assignment = new Assignment();
+      $assignment->assignment_id = $request->assignment_id;
+      $assignment->filename = $AssignmentFile->getClientOriginalName();
+      $assignment->directory = 'upload/assignment';
+      $assignment->date = date("Y-m-d");
+      $assignment->duedate = $request->duedate;
+      $assignment->class_id = $request->class_id;
+      $assignment->section_id = $request->section_id;
+      $assignment->subject_id = $request->subject_id;
+      $assignment->save();
+
+      $note = new Note();
+      $note->note_id = $request->note_id;
+      $note->filename = $noteFile->getClientOriginalName();
+      $note->directory = 'upload/note';
+      $note->date = date("Y-m-d");
+      $note->class_id = $request->class_id;
+      $note->section_id = $request->section_id;
+      $note->subject_id = $request->subject_id;
+      $note->save();
+
+
       if($AssignmentFile->move('upload/assignment', $AssignmentFile->getClientOriginalName()) && $noteFile->move('upload/note', $noteFile->getClientOriginalName()) ){
           $request->session()->flash('bothUploadStatus','Assignment & Note Uploaded Successfully');
           return redirect('teacher/note-upload');
@@ -196,6 +221,18 @@ class TeacherController extends Controller
     // For Assignment
     else if($request->hasfile('uploadAssignment') ){
       $AssignmentFile =  $request->file('uploadAssignment');
+
+      $assignment = new Assignment();
+      $assignment->assignment_id = $request->assignment_id;
+      $assignment->filename = $AssignmentFile->getClientOriginalName();
+      $assignment->directory = 'upload/assignment';
+      $assignment->date = date("Y-m-d");
+      $assignment->duedate = $request->duedate;
+      $assignment->class_id = $request->class_id;
+      $assignment->section_id = $request->section_id;
+      $assignment->subject_id = $request->subject_id;
+      $assignment->save();
+
       if($AssignmentFile->move('upload/assignment', $AssignmentFile->getClientOriginalName()) ){
           $request->session()->flash('assignmentUploadStatus','Assignment Uploaded Successfully');
           return redirect('teacher/note-upload');
@@ -205,7 +242,18 @@ class TeacherController extends Controller
     }
     // For Note
     else if($request->hasfile('uploadNote') ){
-      $noteFile       =  $request->file('uploadNote');
+      $noteFile =  $request->file('uploadNote');
+
+      $note = new Note();
+      $note->note_id = $request->note_id;
+      $note->filename = $noteFile->getClientOriginalName();
+      $note->directory = 'upload/note';
+      $note->date = date("Y-m-d");
+      $note->class_id = $request->class_id;
+      $note->section_id = $request->section_id;
+      $note->subject_id = $request->subject_id;
+      $note->save();
+
       if( $noteFile->move('upload/note', $noteFile->getClientOriginalName()) ){
           $request->session()->flash('noteUploadStatus','Note Uploaded Successfully');
           return redirect('teacher/note-upload');
