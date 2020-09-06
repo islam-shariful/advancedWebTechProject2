@@ -176,9 +176,25 @@ class TeacherController extends Controller
   public function map(Request $request){
     return view('teacher.map');
   }
-  // '/teacher/note-upload'
+  // '/teacher/note-upload' 'GET'
   public function noteUpload(Request $request){
     return view('teacher.note-upload');
+  }
+  // '/teacher/note-upload' 'POST'
+  public function noteUploadedFile(Request $request){
+    if($request->hasfile('uploadFile')){
+      $file = $request->file('uploadFile');
+      if($file->move('upload', $file->getClientOriginalName() )){
+          $request->session()->flash('uploadStatus','File Upload Successfully');
+          return redirect('teacher/note-upload');
+      }else{
+        return redirect('teacher/note-upload');
+      }
+    }
+    else{
+      $request->session()->flash('uploadStatus','File Upload Successfully Failed');
+      return redirect('teacher/note-upload');
+    }
   }
 
 

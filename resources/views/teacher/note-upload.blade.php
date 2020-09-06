@@ -8,11 +8,11 @@
   <!-- Breadcubs Area End Here -->
   <div class="row"></div>
   <form
-    action="/note-upload"
     method="post"
     enctype="multipart/form-data"
   >
-    <div class="input-group mb-3">
+  @csrf
+    <!-- <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text" id="inputGroupFileAddone1"
           >Upload</span
@@ -30,9 +30,13 @@
           >Choose Notes</label
         >
       </div>
+    </div> -->
+    <div>
+      <input type="file" name="uploadFile" />
+      {{session('uploadStatus')}}
     </div>
     <div>
-      <input type="submit" name="submit" />
+      <input type="submit" name="submit" value='Upload'/>
     </div>
   </form>
   <div class="row">

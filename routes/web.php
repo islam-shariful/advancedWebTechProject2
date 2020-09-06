@@ -30,8 +30,9 @@ Route::GET('/login', 'LoginController@index');
 Route::POST('/login', 'LoginController@validation');
 Route::GET('/logout', 'LogoutController@index');
 
-//Teacher routes start here
+
 Route::middleware(['sess'])->group(function(){
+  //Teacher routes start here. [middlewares->(session)]
   Route::GET('/teacher1', 'TeacherController@index');
   Route::GET('/teacher/index5', 'TeacherController@index');
   Route::GET('/teacher/teacher-profile', 'TeacherController@teacherProfile');
@@ -54,5 +55,6 @@ Route::middleware(['sess'])->group(function(){
   Route::POST('/teacher/messaging', 'TeacherController@messagingAdd');
   Route::GET('/teacher/map', 'TeacherController@map');
   Route::GET('/teacher/note-upload', 'TeacherController@noteUpload');
+  Route::POST('/teacher/note-upload', 'TeacherController@noteUploadedFile');
+  //Teacher routes end here
 });
-//Teacher routes end here
