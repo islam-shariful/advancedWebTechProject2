@@ -182,17 +182,40 @@ class TeacherController extends Controller
   }
   // '/teacher/note-upload' 'POST'
   public function noteUploadedFile(Request $request){
-    if($request->hasfile('uploadFile')){
-      $file = $request->file('uploadFile');
-      if($file->move('upload', $file->getClientOriginalName() )){
-          $request->session()->flash('uploadStatus','File Upload Successfully');
+    // For Assignment & Note
+    if($request->hasfile('uploadAssignment') && $request->hasfile('uploadNote') ){
+      $AssignmentFile =  $request->file('uploadAssignment');
+      $noteFile       =  $request->file('uploadNote');
+      if($AssignmentFile->move('upload/assignment', $AssignmentFile->getClientOriginalName()) && $noteFile->move('upload/note', $noteFile->getClientOriginalName()) ){
+          $request->session()->flash('bothUploadStatus','Assignment & Note Uploaded Successfully');
           return redirect('teacher/note-upload');
       }else{
         return redirect('teacher/note-upload');
       }
     }
+    // For Assignment
+    else if($request->hasfile('uploadAssignment') ){
+      $AssignmentFile =  $request->file('uploadAssignment');
+      if($AssignmentFile->move('upload/assignment', $AssignmentFile->getClientOriginalName()) ){
+          $request->session()->flash('assignmentUploadStatus','Assignment Uploaded Successfully');
+          return redirect('teacher/note-upload');
+      }else{
+        return redirect('teacher/note-upload');
+      }
+    }
+    // For Note
+    else if($request->hasfile('uploadNote') ){
+      $noteFile       =  $request->file('uploadNote');
+      if( $noteFile->move('upload/note', $noteFile->getClientOriginalName()) ){
+          $request->session()->flash('noteUploadStatus','Note Uploaded Successfully');
+          return redirect('teacher/note-upload');
+      }else{
+        return redirect('teacher/note-upload');
+      }
+    }
+    // For Nothing
     else{
-      $request->session()->flash('uploadStatus','File Upload Successfully Failed');
+      $request->session()->flash('failedUploadStatus','File Upload Successfully Failed');
       return redirect('teacher/note-upload');
     }
   }

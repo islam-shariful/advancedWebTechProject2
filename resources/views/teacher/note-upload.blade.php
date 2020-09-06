@@ -31,13 +31,23 @@
         >
       </div>
     </div> -->
+    <!-- Assignment & Note Upload Div Start -->
     <div>
-      <input type="file" name="uploadFile" />
-      {{session('uploadStatus')}}
-    </div>
-    <div>
+      <div>
+        <label>Upload Assignment:</label>
+        <input type="file" name="uploadAssignment" />
+        {{session('assignmentUploadStatus')}}
+      </div>
+      <div>
+        <label>Upload Notes:</label>
+        <input type="file" name="uploadNote" />
+        {{session('noteUploadStatus')}}
+      </div>
       <input type="submit" name="submit" value='Upload'/>
+      {{session('bothUploadStatus')}}
+      {{session('failedUploadStatus')}}
     </div>
+    <!-- Assignment & Note Upload Div End -->
   </form>
   <div class="row">
     <!-- All Notice Area Start Here -->
