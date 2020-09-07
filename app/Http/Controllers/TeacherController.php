@@ -14,6 +14,8 @@ use App\Message;
 use App\Assignment;
 use App\Note;
 
+use PDF;
+
 class TeacherController extends Controller
 {
   // '/teacher1'  ||  '/teacher/index5'
@@ -23,12 +25,24 @@ class TeacherController extends Controller
     $noticeList = DB::table('notice')->get();
     return view('teacher.index5')->with('noticeList', $noticeList);
   }
-  // '/teacher/teacher-profile'
+  // '/teacher/teacher-profile' 'GET'
   public function teacherProfile(Request $request){
     $teacher = new Teacher();
     $teacherInfo = $teacher->where('teacher_id', $request->session()->get('username'))
                       ->get();
     return view('teacher.teacher-profile')->with('teacherInfo', $teacherInfo[0]);
+  }
+  // '/teacher/teacher-profilePDF' 'GET'
+  public function teacherProfilePDF(Request $request){
+    $teacher = new Teacher();
+    $teacherInfo = $teacher->where('teacher_id', $request->session()->get('username'))
+                      ->get();
+    // share data to view
+    view()->share('teacherInfo',$teacherInfo[0]);
+    $pdf = PDF::loadView('teacher.teacher-profilePDF', $teacherInfo[0]);
+
+    // download PDF file with download method
+    return $pdf->download($teacherInfo[0]['teacher_id'].'.pdf');
   }
   // 'teacher/class-routine' 'GET'
   public function routine(Request $request){
@@ -133,6 +147,19 @@ class TeacherController extends Controller
     $gradeList = $grade->where('student_id', $request->student_id)
                         ->get();
     return view('teacher.grade-sheet')->with('gradeList', $gradeList);
+  }
+  // '/teacher/grade-sheetPDF' 'GET' 'Generate PDF'
+  public function gradeSheetPDF(Request $request){
+    $grade = new Grade();
+    // retreive all records from db
+    $gradeList = $grade->get();
+
+    // share data to view
+    view()->share('gradeList',$gradeList);
+    $pdf = PDF::loadView('teacher.grade-sheetPDF', $gradeList);
+
+    // download PDF file with download method
+    return $pdf->download('pdf_file.pdf');
   }
   // '/teacher/notice-board' 'GET'
   public function noticeBoard(Request $request){

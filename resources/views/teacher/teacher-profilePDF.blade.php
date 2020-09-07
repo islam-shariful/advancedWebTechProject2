@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title></title>
   </head>
   <body>
     <div>
@@ -24,79 +24,79 @@
                     <tr>
                       <td>ID:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacher_id %>
+                        {{ $teacherInfo->teacher_id }}
                       </td>
                     </tr>
                     <tr>
                       <td>Name:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teachername %>
+                        {{ $teacherInfo->teachername }}
                       </td>
                     </tr>
                     <tr>
                       <td>E-mail:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacheremail %>
+                        {{ $teacherInfo->teacheremail }}
                       </td>
                     </tr>
                     <tr>
                       <td>Designation:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherdesignation %>
+                        {{ $teacherInfo->teacherdesignation }}
                       </td>
                     </tr>
                     <tr>
                       <td>Department:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherdepartment %>
+                        {{ $teacherInfo->teacherdepartment }}
                       </td>
                     </tr>
                     <tr>
                       <td>Subject Id:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= subject_id %>
+                        {{ $teacherInfo->subject_id }}
                       </td>
                     </tr>
                     <tr>
                       <td>Address:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacheraddress %>
+                        {{ $teacherInfo->teacheraddress }}
                       </td>
                     </tr>
                     <tr>
                       <td>Date of Birth:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherdob %>
+                        {{ $teacherInfo->teacherdob }}
                       </td>
                     </tr>
                     <tr>
                       <td>Gender:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teachergender %>
+                        {{ $teacherInfo->teachergender }}
                       </td>
                     </tr>
                     <tr>
                       <td>Religion:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherreligion %>
+                        {{ $teacherInfo->teacherreligion }}
                       </td>
                     </tr>
                     <tr>
                       <td>Joining Date:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherjoiningdate %>
+                        {{ $teacherInfo->teacherjoiningdate }}
                       </td>
                     </tr>
                     <tr>
                       <td>Father Name:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teacherfathername %>
+                        {{ $teacherInfo->teacherfathername }}
                       </td>
                     </tr>
                     <tr>
                       <td>Mother Name:</td>
                       <td class="font-medium text-dark-medium">
-                        <%= teachermothername %>
+                        {{ $teacherInfo->teachermothername }}
                       </td>
                     </tr>
                   </tbody>

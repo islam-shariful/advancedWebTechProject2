@@ -45,17 +45,14 @@
             <h3 class="text-dark-medium font-medium"> {{ $teacherInfo['teachername'] }} </h3>
             <div class="header-elements">
               <ul>
-                <li>
+                <!-- <li>
                   <a href="#"><i class="far fa-edit"></i></a>
                 </li>
                 <li>
                   <a href="#"><i class="fas fa-print"></i></a>
-                </li>
+                </li> -->
                 <li>
-                  <form method="POST">
-                    <!-- <a href="teacher-profile" onclick="pdfGen()"><i class="fas fa-download"></i></a> -->
-                    <button type="submit" class="fas fa-download">pdf[Under Production]</button>
-                  </form>
+                  <a href='teacher-profilePDF'>PDF</a>
                 </li>
               </ul>
             </div>

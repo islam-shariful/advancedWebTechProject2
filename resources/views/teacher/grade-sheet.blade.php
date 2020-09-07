@@ -17,10 +17,7 @@
             <div class="header-elements">
               <ul>
                 <li>
-                  <form method="POST" action="grade-sheetPDF">
-                    <!-- <a href="teacher-profile" onclick="pdfGen()"><i class="fas fa-download"></i></a> -->
-                    <button type="submit" class="fas fa-download">pdf</button>
-                  </form>
+                  <a href='grade-sheetPDF'>PDF</a>
                 </li>
               </ul>
             </div>

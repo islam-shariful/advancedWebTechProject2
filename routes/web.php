@@ -36,6 +36,7 @@ Route::middleware(['sess'])->group(function(){
   Route::GET('/teacher1', 'TeacherController@index');
   Route::GET('/teacher/index5', 'TeacherController@index');
   Route::GET('/teacher/teacher-profile', 'TeacherController@teacherProfile');
+  Route::GET('/teacher/teacher-profilePDF', 'TeacherController@teacherProfilePDF');
   Route::GET('/teacher/class-routine', 'TeacherController@routine');
   Route::POST('/teacher/class-routine', 'TeacherController@routineSearch');
   Route::GET('/teacher/all-student', 'TeacherController@allStudent');
@@ -48,6 +49,7 @@ Route::middleware(['sess'])->group(function(){
   Route::POST('/teacher/exam-grade/edit/{result_id}', 'TeacherController@examGradeModify');
   Route::GET('/teacher/grade-sheet', 'TeacherController@gradeSheet');
   Route::POST('/teacher/grade-sheet', 'TeacherController@gradeSheetSearch');
+  Route::GET('/teacher/grade-sheetPDF', 'TeacherController@gradeSheetPDF');
   Route::GET('/teacher/notice-board', 'TeacherController@noticeBoard');
   Route::POST('/teacher/notice-board', 'TeacherController@noticeBoardAdd');
   Route::POST('/teacher/notice-boardSearch', 'TeacherController@noticeBoardSearch');
