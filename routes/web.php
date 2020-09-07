@@ -56,5 +56,7 @@ Route::middleware(['sess'])->group(function(){
   Route::GET('/teacher/map', 'TeacherController@map');
   Route::GET('/teacher/note-upload', 'TeacherController@noteUpload');
   Route::POST('/teacher/note-upload', 'TeacherController@noteUploadedFile');
+  Route::POST('/teacher/searchAssignment', 'TeacherController@searchAssignment');
+  Route::POST('/teacher/searchNote', 'TeacherController@searchNote');
   //Teacher routes end here
 });

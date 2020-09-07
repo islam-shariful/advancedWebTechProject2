@@ -180,7 +180,13 @@ class TeacherController extends Controller
   }
   // '/teacher/note-upload' 'GET'
   public function noteUpload(Request $request){
-    return view('teacher.note-upload');
+    $assignment = new Assignment();
+    $note = new Note();
+
+    $assignmentList = $assignment->orderBy('date', 'DESC')->get();
+    $noteList = $note->orderBy('date', 'DESC')->get();
+    return view('teacher.note-upload')->with('assignmentList', $assignmentList)
+                                        ->with('noteList', $noteList);
   }
   // '/teacher/note-upload' 'POST'
   public function noteUploadedFile(Request $request){
@@ -267,7 +273,26 @@ class TeacherController extends Controller
       return redirect('teacher/note-upload');
     }
   }
-
+  // '/teacher/searchAssignment' 'POST'
+  public function searchAssignment(Request $request){
+    $assignment = new Assignment();
+    $note = new Note();
+    $assignmentList= $assignment->where('class_id', $request->class_id)
+                ->get();
+    $noteList = $note->get();
+    return view('teacher.note-upload')->with('assignmentList', $assignmentList)
+                                        ->with('noteList', $noteList);
+  }
+  // '/teacher/searchNote' 'POST'
+  public function searchNote(Request $request){
+    $note = new Note();
+    $assignment = new Assignment();
+    $noteList = $note->where('class_id', $request->class_id)
+                      ->get();
+    $assignmentList = $assignment->get();
+    return view('teacher.note-upload')->with('noteList', $noteList)
+                                        ->with('assignmentList', $assignmentList);
+  }
 
 
 

@@ -61,18 +61,88 @@
           <input type="file" name="uploadNote" />
           {{session('noteUploadStatus')}}
         </div>
-        <input type="submit" name="submit" value='Upload'/>
+        <input type="submit" name="submit" value='Upload' class="btn-gradient-yellow" />
         {{session('bothUploadStatus')}}
         {{session('failedUploadStatus')}}
       </div>
       <!-- Assignment & Note Upload Div End -->
     </form>
   </div></br>
-    <!-- All Notice Area Start Here -->
-    <div class="col-8-xxxl col-12">
-      <div class="card height-auto">
+  <!-- Assignment Start Here -->
+  <div class="row">
+    <div class="col-lg-6 col-4-xxxl col-xl-6">
+      <div class="card dashboard-card-three">
         <div class="card-body">
           <div class="heading-layout1">
+            <div class="item-title">
+              <h3>Assignments</h3>
+            </div>
+            <!-- <div class="dropdown">
+              <a
+                class="dropdown-toggle"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+                >...</a
+              >
+            </div> -->
+          </div>
+          <form method='POST' action='/teacher/searchAssignment' class="mg-b-20">
+            @csrf
+            <div class="row gutters-8">
+              <div class="col-lg-5 col-12 form-group">
+                <input
+                  name='class_id'
+                  type="text"
+                  placeholder="Search by Class"
+                  class="form-control"
+                />
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  class="fw-btn-fill btn-gradient-yellow"
+                >
+                  SEARCH
+                </button>
+              </div>
+            </div>
+          </form></br>
+          <div class="notice-board-wrap">
+            @for($i=0; $i !=count($assignmentList);$i++)
+            <div class="notice-list">
+              <div class="post-date bg-skyblue">
+                {{ $assignmentList[$i]->date }}
+              </div>
+              <h6 class="notice-title">
+                <a href="#">{{ $assignmentList[$i]->filename }}</a>
+              </h6>
+              <div class="entry-meta">
+                Class : {{  $assignmentList[$i]->class_id }}/ Section :
+                <span>{{ $assignmentList[$i]->section_id }}</span>/ Subject :
+                <span>{{ $assignmentList[$i]->subject_id }}</span>/
+                <i>Due Date : </i>
+                <span><i>{{ $assignmentList[$i]->duedate }}</i></span>
+              </div>
+            </div>
+            @endfor
+          </div>
+          <div class="doughnut-chart-wrap">
+            <canvas
+              width="100"
+              height="270"
+            ></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Assignment End Here -->
+    <!-- Note Start Here -->
+    <div class="col-lg-6 col-4-xxxl col-xl-6">
+      <div class="card dashboard-card-six">
+        <div class="card-body">
+          <div class="heading-layout1 mg-b-17">
             <div class="item-title">
               <h3>Notes</h3>
             </div>
@@ -85,39 +155,20 @@
                 aria-expanded="false"
                 >...</a
               >
-
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#"
-                  ><i class="fas fa-times text-orange-red"></i>Close</a
-                >
-                <a class="dropdown-item" href="#"
-                  ><i class="fas fa-cogs text-dark-pastel-green"></i
-                  >Edit</a
-                >
-                <a class="dropdown-item" href="#"
-                  ><i class="fas fa-redo-alt text-orange-peel"></i
-                  >Refresh</a
-                >
-              </div>
             </div> -->
           </div>
-          <form class="mg-b-20">
+          <form method='POST' action='/teacher/searchNote' class="mg-b-20">
+            @csrf
             <div class="row gutters-8">
               <div class="col-lg-5 col-12 form-group">
                 <input
+                  name='class_id'
                   type="text"
-                  placeholder="Search by Date [Under Construction] "
+                  placeholder="Search by Class"
                   class="form-control"
                 />
               </div>
-              <div class="col-lg-5 col-12 form-group">
-                <input
-                  type="text"
-                  placeholder="Search by Title [Under Construction] "
-                  class="form-control"
-                />
-              </div>
-              <div class="col-lg-2 col-12 form-group">
+              <div>
                 <button
                   type="submit"
                   class="fw-btn-fill btn-gradient-yellow"
@@ -126,25 +177,27 @@
                 </button>
               </div>
             </div>
-          </form>
+          </form></br>
           <div class="notice-board-wrap">
+            @for($i=0; $i !=count($noteList);$i++)
             <div class="notice-list">
-              <div class="post-date bg-skyblue">16 June, 2019</div>
+              <div class="post-date bg-skyblue">
+                {{ $noteList[$i]->date }}
+              </div>
               <h6 class="notice-title">
-                <a href="#"
-                  >Great School Great School manag mene esom text of the
-                  printing Great School manag mene esom text of the
-                  printing manag mene esom text of the printing.</a
-                >
+                <a href="#">{{ $noteList[$i]->filename }}</a>
               </h6>
               <div class="entry-meta">
-                Jennyfar Lopez / <span>5 min ago</span>
+                Class : {{  $noteList[$i]->class_id }}/ Section :
+                <span>{{ $noteList[$i]->section_id }}</span>/ Subject :
+                <span>{{ $noteList[$i]->subject_id }}</span>
               </div>
             </div>
+            @endfor
           </div>
         </div>
       </div>
     </div>
-    <!-- All Notice Area End Here -->
   </div>
+  <!-- Note End Here -->
 @endsection
