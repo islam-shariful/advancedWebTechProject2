@@ -13,6 +13,7 @@ use App\Result;
 use App\Message;
 use App\Assignment;
 use App\Note;
+use App\LostFound;
 
 use PDF;
 
@@ -199,7 +200,19 @@ class TeacherController extends Controller
     $message->date = date("Y-m-d");
     $message->save();
     return redirect('teacher/messaging');
-    //echo $request->message;
+  }
+  // '/teacher/lost-found' 'POST'
+  public function lostFound(Request $request){
+    $lostFound = new LostFound();
+    $lostFound->lostfound_id = $request->lostfound_id;
+    $lostFound->lostname = $request->lostname;
+    $lostFound->lostdescription = $request->lostdescription;
+    $lostFound->lostday = $request->lostday;
+    $lostFound->found = $request->found;
+    $lostFound->received = $request->received;
+    $lostFound->save();
+    
+    return redirect('teacher/messaging');
   }
   // '/teacher/map'
   public function map(Request $request){
