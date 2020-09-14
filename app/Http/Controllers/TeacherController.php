@@ -23,7 +23,7 @@ class TeacherController extends Controller
   public function index(Request $request){
     // $notice = new Notice();
     // $noticeList = $notice->get();
-    $noticeList = DB::table('notice')->get();
+    $noticeList = DB::table('notice')->orderBy('notice_id', 'DESC')->get();
     return view('teacher.index5')->with('noticeList', $noticeList);
   }
   // '/teacher/teacher-profile' 'GET'
@@ -215,10 +215,46 @@ class TeacherController extends Controller
   }
   // '/teacher/notice-boardSearch' 'POST'
   public function noticeBoardSearch(Request $request){
+    $class_id = $_POST['class_id'];
+    //$class_id = $request->class_id;
+
     $notice = new Notice();
-    $noticeList = $notice->where('class_id', $request->class_id)
+    $noticeList = $notice->where('class_id', 'like', '%'.$class_id.'%')
+                          ->orderBy('notice_id', 'DESC')
                           ->get();
-    return view('teacher/notice-board')->with('noticeList', $noticeList);
+    $output = '';
+    if(count($noticeList)>0){
+      foreach($noticeList as $row)
+      {
+        $output .= '
+                    <div class="notice-list">
+                      <div class="post-date bg-skyblue">
+                         '.$row->noticedate.'
+                      </div>
+                      <h6 class="notice-title">
+                        <a href="#">'.$row->description.'</a>
+                      </h6>
+                      <div class="entry-meta">
+                        Class :'.$row->class_id.'/ Section :
+                        <span>'.$row->section_id.'</span>/ Subject :
+                        <span>'.$row->subject_id.'</span>/
+                        <i>Notice ID : </i>
+                        <span><i>'.$row->notice_id.'</i></span>
+                      </div>
+                    </div>
+                    ';
+      }
+      echo $output;
+    }
+    else{
+      $output = '
+       <tr>
+        <td>No Data Found</td>
+       </tr>
+       ';
+      echo $output;
+    }
+
   }
   // '/teacher/messaging' 'GET'
   public function messaging(Request $request){

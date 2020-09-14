@@ -146,31 +146,33 @@
             <div class="row gutters-8">
               <div class="col-lg-5 col-12 form-group">
                 <input
-                name='class_id'
+                  name='class_id'
+                  id='class_id'
+                  onkeyup="ajax()"
                   type="text"
                   placeholder="Search by Class"
                   class="form-control"
                 />
               </div>
-              <div class="col-lg-5 col-12 form-group">
+              <!-- <div class="col-lg-5 col-12 form-group">
                 <input
                   type="text"
                   placeholder="Search by Date [Under Production]"
                   class="form-control"
                 />
-              </div>
-              <div class="col-lg-2 col-12 form-group">
+              </div> -->
+              <!-- <div class="col-lg-2 col-12 form-group">
                 <button
                   type="submit"
                   class="fw-btn-fill btn-gradient-yellow"
                 >
                   SEARCH
                 </button>
-              </div>
+              </div> -->
             </div>
           </form>
-          <div class="notice-board-wrap">
-            @for($i=0; $i != count($noticeList);$i++)
+          <div class="notice-board-wrap"  id="data">
+            <!-- @for($i=0; $i != count($noticeList);$i++)
             <div class="notice-list">
               <div class="post-date bg-skyblue">
                  {{ $noticeList[$i]['noticedate'] }}
@@ -186,11 +188,36 @@
                 <span><i>{{ $noticeList[$i]['notice_id'] }}</i></span>
               </div>
             </div>
-            @endfor
+            @endfor -->
           </div>
         </div>
       </div>
     </div>
     <!-- All Notice Area End Here -->
   </div>
+  <!-- AJAX script Start-->
+  <script type="text/javascript">
+
+  function ajax(){
+
+    var class_id = document.getElementById('class_id').value;
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open('POST', '/teacher/notice-boardSearch', true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhttp.send('class_id='+class_id);
+
+    xhttp.onreadystatechange = function(){
+      if(this.readyState == 4 && this.status == 200){
+        document.getElementById('data').innerHTML =  this.responseText;
+
+      }
+      else{
+        document.getElementById('data').innerHTML =  "Connection Error";
+      }
+    }
+
+  }
+  </script>
+  <!-- AJAX script Start-->
 @endsection

@@ -363,7 +363,7 @@
               </li>
               <li class="nav-item">
                 <a href="/teacher/messaging" class="nav-link"
-                  ><i class="flaticon-chat"></i><span>Messeage</span></a
+                  ><i class="flaticon-chat"></i><span>Message | Lost&Found</span></a
                 >
               </li>
 

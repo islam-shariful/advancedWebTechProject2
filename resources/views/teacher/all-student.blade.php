@@ -34,11 +34,11 @@
                   <input
                     type="text"
                     name="roll"
-                    placeholder="Search by Roll "
+                    placeholder="Enter Student ID [e.g. 20-****-04]"
                     class="form-control"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="col-4-xxxl col-xl-4 col-lg-4 col-12 form-group"
                 >
                   <input
@@ -57,7 +57,7 @@
                     placeholder="Search by Class [Under Production]"
                     class="form-control"
                   />
-                </div>
+                </div> -->
                 <div
                   class="col-1-xxxl col-xl-2 col-lg-2 col-12 form-group"
                 >
