@@ -51,12 +51,45 @@ class TeacherController extends Controller
     $routineList = $routine->get();
     return view('teacher.class-routine')->with('routineList', $routineList);
   }
-  // 'teacher/class-routine' 'POST'
+  // 'teacher/class-routine' 'POST'=>'AJAX Search'
   public function routineSearch(Request $request){
+    //$teacher_id = $_POST['teacher_id'];
+    $teacher_id = $request->teacher_id;
+
     $routine = new Routine();
-    $routineList = $routine->where('teacher_id', $request->teacher_id)
+    $routineList = $routine->where('teacher_id', 'like', '%'.$teacher_id.'%')
                             ->get();
-    return view('teacher.class-routine')->with('routineList', $routineList);
+    $output = '';
+    if(count($routineList)>0){
+      foreach($routineList as $row)
+      {
+        $output .= '
+                    <tr>
+                      <th>'.$row->day.'</th>
+                      <th>'.$row->class_id.'</th>
+                      <th>'.$row->subjectname.'</th>
+                      <th>'.$row->subject_id.'</th>
+                      <th>'.$row->sectionname.'</th>
+                      <th>'.$row->section_id.'</th>
+                      <th>'.$row->teacher_id.'</th>
+                      <th>'.$row->teachername.'</th>
+                      <th>'.$row->startingtime.'</th>
+                      <th>'.$row->endingtime.'</th>
+                      <th>'.$row->routine_id.'</th>
+                    </tr>
+                    ';
+      }
+      echo $output;
+    }
+    else{
+      $output = '
+       <tr>
+        <td>No Data Found</td>
+       </tr>
+       ';
+      echo $output;
+    }
+
   }
   // '/teacher/all-student' 'GET'
   public function allStudent(Request $request){
@@ -211,7 +244,7 @@ class TeacherController extends Controller
     $lostFound->found = $request->found;
     $lostFound->received = $request->received;
     $lostFound->save();
-    
+
     return redirect('teacher/messaging');
   }
   // '/teacher/map'
