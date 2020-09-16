@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use App\Teacher;
 use App\Student;
@@ -21,10 +22,29 @@ class TeacherController extends Controller
 {
   // '/teacher1'  ||  '/teacher/index5'
   public function index(Request $request){
-    // $notice = new Notice();
-    // $noticeList = $notice->get();
-    $noticeList = DB::table('notice')->orderBy('notice_id', 'DESC')->get();
+    // // $notice = new Notice();
+    // // $noticeList = $notice->get();
+    // $noticeList = DB::table('notice')->orderBy('notice_id', 'DESC')->get();
+    // return view('teacher.index5')->with('noticeList', $noticeList);
+    $response = Http::get('http://localhost:3000/teacher/index');
+    $noticeList = json_decode($response->body());
+
     return view('teacher.index5')->with('noticeList', $noticeList);
+    ###########################################
+    //print_r($noticeList->data[5]->notice_id);
+    //print_r(count($noticeList->results));
+    ###########################################
+    //TESTING GARBAGE START #######################################
+    // $noticeList = new $notice;
+    //print_r($response->body());
+    //$notice = $response->body();
+      //print_r($notice.'name');
+    //echo "<script>console.log($noticeList )</script>";
+
+    // $json = file_get_contents($noticeList,0,null,null);
+    // $json_output = json_decode($json, JSON_PRETTY_PRINT );
+    // echo $json_output;
+    //TESTING GARBAGE END ########################################
   }
   // '/teacher/teacher-profile' 'GET'
   public function teacherProfile(Request $request){
@@ -55,6 +75,9 @@ class TeacherController extends Controller
   public function routineSearch(Request $request){
     //$teacher_id = $_POST['teacher_id'];
     $teacher_id = $request->teacher_id;
+
+    //API request
+    //$response = Http::get('http://localhost:3000/teacher/class-routine/'.$teacher_id);
 
     $routine = new Routine();
     $routineList = $routine->where('teacher_id', 'like', '%'.$teacher_id.'%')

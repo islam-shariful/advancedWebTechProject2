@@ -65,20 +65,20 @@
             </div>
           </div>
           <div class="notice-box-wrap">
-            @for($i=0; $i !=count($noticeList);$i++)
+            @for($i=0; $i !=count($noticeList->results);$i++)
             <div class="notice-list">
               <div class="post-date bg-skyblue">
-                {{ $noticeList[$i]->noticedate }}
+                {{ $noticeList->results[$i]->noticedate }}
               </div>
               <h6 class="notice-title">
-                <a href="#">{{ $noticeList[$i]->description }}</a>
+                <a href="#">{{ $noticeList->results[$i]->description }}</a>
               </h6>
               <div class="entry-meta">
-                Class : {{  $noticeList[$i]->class_id }}/ Section :
-                <span>{{ $noticeList[$i]->section_id }}</span>/ Subject :
-                <span>{{ $noticeList[$i]->subject_id }}</span>/
+                Class : {{  $noticeList->results[$i]->class_id }}/ Section :
+                <span>{{ $noticeList->results[$i]->section_id }}</span>/ Subject :
+                <span>{{ $noticeList->results[$i]->subject_id }}</span>/
                 <i>Notice ID : </i>
-                <span><i>{{ $noticeList[$i]->notice_id }}</i></span>
+                <span><i>{{ $noticeList->results[$i]->notice_id }}</i></span>
               </div>
             </div>
             @endfor
