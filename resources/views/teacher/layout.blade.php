@@ -377,6 +377,11 @@
                   ><i class="flaticon-checklist"></i><span>Upload Note</span></a
                 >
               </li>
+              <li class="nav-item">
+                <a href="/teacher/live-chat" class="nav-link"
+                  ><i class="flaticon-chat"></i><span>Live Chat</span></a
+                >
+              </li>
             </ul>
           </div>
         </div>

@@ -61,5 +61,10 @@ Route::middleware(['sess'])->group(function(){
   Route::POST('/teacher/note-upload', 'TeacherController@noteUploadedFile');
   Route::POST('/teacher/searchAssignment', 'TeacherController@searchAssignment');
   Route::POST('/teacher/searchNote', 'TeacherController@searchNote');
+  //Live Chat
+  Route::GET('/teacher/live-chat', 'chat@index');
+  Route::POST('/teacher/live-chat', 'chat@send');
+
+  Route::GET('/teacher/chat', 'chat@chatView');
   //Teacher routes end here
 });
