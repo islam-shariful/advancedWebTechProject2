@@ -64,6 +64,7 @@ Route::middleware(['sess'])->group(function(){
   //Live Chat
   Route::GET('/teacher/live-chat', 'ChatController@index');
   Route::POST('/teacher/live-chat', 'ChatController@send');
+  Route::POST('/teacher/live-chatPOST', 'ChatController@chatPOST');
 
   Route::GET('/teacher/chat', 'ChatController@chatView');
   //Teacher routes end here

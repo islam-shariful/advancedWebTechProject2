@@ -10,11 +10,12 @@
   </div>
   <div class="row">
     <!-- Students Chat Start Here -->
-    <form method='post'>
+    <form method='post' action="/teacher/live-chatPOST">
       @csrf
       <input type='text' id='text' name='text' placeholder="Message" onkeyup="ajax()">
       <input type='submit' name='submit' value='Send'>
     </form>
+
     <!-- Students Chat End Here -->
 
   </div>
@@ -45,17 +46,15 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      var id = data.text[0];
-      //Message NULL check
-      if(data.text[1] == null){
-        textMessage = "";
-      }else{
-        textMessage = data.text[1]
+      allData = data;
+      // allData = JSON.stringify(data);
+      // allData = JSON.parse(allData);
+      output="";
+      for(var i=0; i<allData.text.length; i++){
+        output+="<h4>"+allData.text[i].user_id +": "+allData.text[i].text+"</h4>"
       }
-      var textMessage = data.text[1];
-      document.getElementById("messaging").innerHTML = id +": "+ textMessage;
+      document.getElementById("messaging").innerHTML = output;
 
-      //alert(JSON.stringify(data));
     });
   </script>
   <!-- Pusher Script End ################################################# -->
