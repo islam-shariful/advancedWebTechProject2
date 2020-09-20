@@ -54,6 +54,7 @@
       }
       var textMessage = data.text[1];
       document.getElementById("messaging").innerHTML = id +": "+ textMessage;
+
       //alert(JSON.stringify(data));
     });
   </script>
