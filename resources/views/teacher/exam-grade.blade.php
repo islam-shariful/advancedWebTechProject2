@@ -5,6 +5,18 @@
 @endsection
 
 @section('bodyContent')
+    <!-- Show Error Start -->
+    @if($errors->any())
+      <div class='alart alert-danger'>
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{ $error }} </li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+    <!-- Show Error End -->
+
     <div class="row">
       <form method="post" class="mg-b-20">
         @csrf
@@ -134,7 +146,7 @@
                     class="form-control"
                   />
                 </div>
-                <div class="col-lg-3 col-12 form-group">
+                <!-- <div class="col-lg-3 col-12 form-group">
                   <input
                     type="text"
                     placeholder="Class ID [Under Production]"
@@ -147,7 +159,7 @@
                     placeholder="Section ID [Under Production]"
                     class="form-control"
                   />
-                </div>
+                </div> -->
                 <div class="col-lg-2 col-12 form-group">
                   <button
                     type="submit"
@@ -162,15 +174,8 @@
               <table method="post" class="table display data-table text-nowrap">
                 <thead>
                   <tr>
-                    <th>
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input checkAll"
-                        />
-                        <label class="form-check-label">Result ID</label>
-                      </div>
-                    </th>
+                    <th>Actions</th>
+                    <th>Result ID</th>
                     <th>Class ID</th>
                     <th>Section ID</th>
                     <th>Subject ID</th>
@@ -179,7 +184,6 @@
                     <th>Mid Marks</th>
                     <th>Final Marks</th>
                     <th>Total Marks</th>
-                    <th>Actions</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -187,6 +191,7 @@
                   @for($i=0; $i != count($resultList); $i++)
                   <tr>
                     </td>
+                    <th><a href="/teacher/exam-grade/edit/{{$resultList[$i]['result_id']}}">Edit Result</a></th>
                     <td>{{ $resultList[$i]['result_id']}}</td>
                     <th>{{ $resultList[$i]['class_id'] }}</th>
                     <th>{{ $resultList[$i]['section_id'] }}</th>
@@ -196,8 +201,7 @@
                     <th>{{ $resultList[$i]['midmarks'] }}</th>
                     <th>{{ $resultList[$i]['finalmarks'] }}</th>
                     <th>{{ $resultList[$i]['total'] }}</th>
-                    <th><a href="/teacher/exam-grade/edit/{{$resultList[$i]['result_id']}}">Edit Result</a></th>
-                    <td>
+                    <!-- <td>
                       <div class="dropdown">
                         <a
                           href="#"
@@ -209,7 +213,7 @@
                             class="flaticon-more-button-of-three-dots"
                           ></span>
                         </a>
-                        <!-- <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#"
                           ><i class="fas fa-times text-orange-red"></i
                           >Close</a
@@ -226,9 +230,9 @@
                           ></i
                           >Refresh</a
                         >
-                      </div> -->
                       </div>
-                    </td>
+                      </div>
+                    </td> -->
                   </tr>
                   @endfor
                 </tbody>

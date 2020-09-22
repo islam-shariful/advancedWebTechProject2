@@ -4,6 +4,17 @@
     <title>Teacher | All Student</title>
 @endsection
 @section('bodyContent')
+  <!-- Show Error Start -->
+  @if($errors->any())
+    <div class='alart alert-danger'>
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  <!-- Show Error End -->
   <!-- Student Table Area Start Here -->
   <div class="row">
     <div class="col-lg-12">
@@ -34,7 +45,7 @@
                   <input
                     type="text"
                     name="roll"
-                    placeholder="Enter Student ID [e.g. 20-****-04]"
+                    placeholder="Student Roll/ID [e.g. 20-****-04]"
                     class="form-control"
                   />
                 </div>

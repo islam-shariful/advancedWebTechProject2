@@ -48,7 +48,7 @@
         <div class="item-content">
           <div class="header-inline item-header">
             <h3 class="text-dark-medium font-medium">{{ $studentInfo->studentname }}</h3>
-            <div class="header-elements">
+            <!-- <div class="header-elements">
               <ul>
                 <li>
                   <a href="#"><i class="far fa-edit"></i></a>
@@ -58,13 +58,12 @@
                 </li>
                 <li>
                   <form method="POST">
-                    <!-- <a href="teacher-profile" onclick="pdfGen()"><i class="fas fa-download"></i></a> -->
                     <button type="submit" class="fas fa-download">pdf</button>
                     <label>[Under Construction]</label>
                   </form>
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
           <p>
             <!-- Aliquam erat volutpat. Curabiene natis massa sedde lacu

@@ -5,6 +5,17 @@
 @endsection
 
 @section('bodyContent')
+  <!-- Show Error Start -->
+  @if($errors->any())
+    <div class='alart alert-danger'>
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  <!-- Show Error End -->
   <!-- Student Table Area Start Here -->
   <div class="card height-auto">
     <div class="card-body">

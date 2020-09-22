@@ -123,6 +123,12 @@ class TeacherController extends Controller
   }
   // '/teacher/all-student' 'POST'
   public function studentDetails(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'roll' => 'required | max:50',
+    ]);
+    //Validity Check END
+
     $student = new Student();
     $studentInfo = $student->where('student_id', $request->roll)
                       ->get();
@@ -141,6 +147,20 @@ class TeacherController extends Controller
   }
   // '/teacher/exam-grade' 'POST'
   public function examGradeAdd(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'result_id' => 'required | max:11',
+      'class_id' => 'required | max:20',
+      'section_id' => 'required | max:11',
+      'attendance' => 'required | max:11',
+      'midmarks' => 'required | max:11',
+      'finalmarks' => 'required | max:11',
+      'total' => 'required | max:11',
+      'subject_id' => 'required | max:20',
+      'student_id' => 'required | max:50',
+    ]);
+    //Validity Check END
+
     $result = new Result();
     $result->result_id = $request->result_id;
     $result->class_id = $request->class_id;
@@ -157,6 +177,12 @@ class TeacherController extends Controller
   }
   // '/teacher/exam-gradeSearch' 'POST'
   public function examGradeSearch(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'student_id' => 'required | max:50',
+    ]);
+    //Validity Check END
+
     $result = new Result();
     $resultList = $result->where('student_id', $request->student_id)
                           ->get();
@@ -175,6 +201,20 @@ class TeacherController extends Controller
   }
   // '/teacher/exam-grade/edit' 'POST'
   public function examGradeModify($result_id, Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'result_id' => 'required | max:11',
+      'class_id' => 'required | max:20',
+      'section_id' => 'required | max:11',
+      'attendance' => 'required | max:11',
+      'midmarks' => 'required | max:11',
+      'finalmarks' => 'required | max:11',
+      'total' => 'required | max:11',
+      'subject_id' => 'required | max:20',
+      'student_id' => 'required | max:50',
+    ]);
+    //Validity Check END
+
     $result = new Result();
     //$grade = new Grade();
 
@@ -200,6 +240,11 @@ class TeacherController extends Controller
   }
   // '/teacher/grade-sheet' 'POST'
   public function gradeSheetSearch(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'student_id' => 'required | max:20',
+    ]);
+    //Validity Check END
     $grade = new Grade();
     $gradeList = $grade->where('student_id', $request->student_id)
                         ->get();
@@ -226,6 +271,15 @@ class TeacherController extends Controller
   }
   // '/teacher/notice-board' 'POST'
   public function noticeBoardAdd(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'notice_id' => 'required | max:20',
+      'description' => 'required | max:50',
+      'subject_id' => 'required | max:20',
+      'class_id' => 'required | max:20',
+      'section_id' => 'required | max:20',
+    ]);
+    //Validity Check END
     $notice = new Notice();
     $notice->noticedate = date("Y-m-d");
     $notice->notice_id = $request->notice_id;
@@ -285,6 +339,11 @@ class TeacherController extends Controller
   }
   // '/teacher/messaging' 'POST'
   public function messagingAdd(Request $request){
+    $validatedData = $request->validate([
+      'title' => 'required | max:64',
+      'recipient' => 'required | max:64',
+      'message' => 'required | max:255',
+    ]);
     $message = new Message();
     $message->title = $request->title;
     $message->recipient = $request->recipient;
@@ -295,6 +354,14 @@ class TeacherController extends Controller
   }
   // '/teacher/lost-found' 'POST'
   public function lostFound(Request $request){
+    $validatedData = $request->validate([
+      'lostfound_id' => 'required | max:20',
+      'lostname' => 'required | max:50',
+      'lostdescription' => 'required | max:50',
+      'lostday' => 'required',
+      'found' => 'required | max:50',
+      'received' => 'required | max:50',
+    ]);
     $lostFound = new LostFound();
     $lostFound->lostfound_id = $request->lostfound_id;
     $lostFound->lostname = $request->lostname;
@@ -324,6 +391,22 @@ class TeacherController extends Controller
   public function noteUploadedFile(Request $request){
     // For Assignment & Note
     if($request->hasfile('uploadAssignment') && $request->hasfile('uploadNote') ){
+      //Validity Check Start
+      $validatedData = $request->validate([
+        'assignment_id' => 'required | max:20',
+        'duedate' => 'required | max:50',
+        'class_id' => 'required | max:20',
+        'section_id' => 'required | max:20',
+        'subject_id' => 'required | max:20',
+      ]);
+      $validatedData = $request->validate([
+        'note_id' => 'required | max:20',
+        'class_id' => 'required | max:20',
+        'section_id' => 'required | max:20',
+        'subject_id' => 'required | max:20',
+      ]);
+      //Validity Check END
+
       $AssignmentFile =  $request->file('uploadAssignment');
       $noteFile       =  $request->file('uploadNote');
 
@@ -358,6 +441,16 @@ class TeacherController extends Controller
     }
     // For Assignment
     else if($request->hasfile('uploadAssignment') ){
+      //Validity Check Start
+      $validatedData = $request->validate([
+        'assignment_id' => 'required | max:20',
+        'duedate' => 'required | max:50',
+        'class_id' => 'required | max:20',
+        'section_id' => 'required | max:20',
+        'subject_id' => 'required | max:20',
+      ]);
+      //Validity Check END
+
       $AssignmentFile =  $request->file('uploadAssignment');
 
       $assignment = new Assignment();
@@ -380,6 +473,15 @@ class TeacherController extends Controller
     }
     // For Note
     else if($request->hasfile('uploadNote') ){
+      //Validity Check Start
+      $validatedData = $request->validate([
+        'note_id' => 'required | max:20',
+        'class_id' => 'required | max:20',
+        'section_id' => 'required | max:20',
+        'subject_id' => 'required | max:20',
+      ]);
+      //Validity Check END
+
       $noteFile =  $request->file('uploadNote');
 
       $note = new Note();
@@ -407,6 +509,11 @@ class TeacherController extends Controller
   }
   // '/teacher/searchAssignment' 'POST'
   public function searchAssignment(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'class_id' => 'required | max:20',
+    ]);
+    //Validity Check END
     $assignment = new Assignment();
     $note = new Note();
     $assignmentList= $assignment->where('class_id', $request->class_id)
@@ -417,6 +524,11 @@ class TeacherController extends Controller
   }
   // '/teacher/searchNote' 'POST'
   public function searchNote(Request $request){
+    //Validity Check Start
+    $validatedData = $request->validate([
+      'class_id' => 'required | max:20',
+    ]);
+    //Validity Check END
     $note = new Note();
     $assignment = new Assignment();
     $noteList = $note->where('class_id', $request->class_id)

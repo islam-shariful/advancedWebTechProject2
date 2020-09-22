@@ -5,6 +5,17 @@
 @endsection
 
 @section('bodyContent')
+  <!-- Show Error Start -->
+  @if($errors->any())
+    <div class='alart alert-danger'>
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  <!-- Show Error End -->
   <!-- Class Routine Area Start Here -->
   <div class="row">
     <div class="col-8-xxxl col-12">
@@ -33,7 +44,7 @@
                   class="form-control"
                 />
               </div>
-              <div class="col-lg-3 col-12 form-group">
+              <!-- <div class="col-lg-3 col-12 form-group">
                 <input
                   name="subject_id"
                   type="text"
@@ -56,7 +67,7 @@
                   placeholder="section_id [Under Production]"
                   class="form-control"
                 />
-              </div>
+              </div> -->
               <div class="col-lg-2 col-12 form-group">
                 <button
                   type="submit"

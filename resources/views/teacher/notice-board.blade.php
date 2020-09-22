@@ -5,6 +5,18 @@
 @endsection
 
 @section('bodyContent')
+  <!-- Show Error Start -->
+  @if($errors->any())
+    <div class='alart alert-danger'>
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  <!-- Show Error End -->
+  
   <div class="row">
     <!-- Add Notice Area Start Here -->
     <div class="col-4-xxxl col-12">

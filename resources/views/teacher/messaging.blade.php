@@ -5,6 +5,17 @@
 @endsection
 
 @section('bodyContent')
+  <!-- Show Error Start -->
+  @if($errors->any())
+    <div class='alart alert-danger'>
+      <ul>
+        @foreach($errors->all() as $error)
+          <li>{{ $error }} </li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  <!-- Show Error End -->
   <!-- Inform Parents Area Start Here -->
   <div class="col-xl-8">
     <div class="card">
