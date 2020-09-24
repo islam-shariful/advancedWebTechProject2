@@ -30,6 +30,8 @@ Route::GET('/login', 'LoginController@index');
 Route::POST('/login', 'LoginController@validation');
 Route::GET('/logout', 'LogoutController@index');
 
+Route::get('login/github', 'LoginController@redirectToProvider');
+Route::get('login/github/callback', 'LoginController@handleProviderCallback');
 
 Route::middleware(['sess'])->group(function(){
   //Teacher routes start here. [middlewares->(session)]
