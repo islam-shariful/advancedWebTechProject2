@@ -29,9 +29,12 @@ Route::get('/test', function () {
 Route::GET('/login', 'LoginController@index');
 Route::POST('/login', 'LoginController@validation');
 Route::GET('/logout', 'LogoutController@index');
-
+//github
 Route::get('login/github', 'LoginController@redirectToProvider');
 Route::get('login/github/callback', 'LoginController@handleProviderCallback');
+//google
+Route::get('login/google', 'LoginController@redirectToProvider_google');
+Route::get('login/google/callback', 'LoginController@handleProviderCallback_google');
 
 Route::middleware(['sess'])->group(function(){
   //Teacher routes start here. ##middleware->(session)##
@@ -40,7 +43,7 @@ Route::middleware(['sess'])->group(function(){
   Route::GET('/teacher/teacher-profile', 'TeacherController@teacherProfile');
   Route::GET('/teacher/teacher-profilePDF', 'TeacherController@teacherProfilePDF');
   Route::GET('/teacher/class-routine', 'TeacherController@routine');
-  Route::POST('/teacher/class-routine', 'TeacherController@routineSearch');
+    Route::POST('/teacher/class-routine', 'TeacherController@routineSearch');
   Route::GET('/teacher/all-student', 'TeacherController@allStudent');
   Route::POST('/teacher/all-student', 'TeacherController@studentDetails');
   Route::GET('/teacher/student-attendence', 'TeacherController@studentAttendence');

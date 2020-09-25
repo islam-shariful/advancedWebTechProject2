@@ -40,4 +40,9 @@ return [
     // 'redirect' => 'http://your-callback-url',
     ],
 
+    'google' => [
+    'client_id'     => '228362425734-pa22eu98nqiqnd0v4bj77botnl983tji.apps.googleusercontent.com',
+    'client_secret' => '1EaLQw4zjyGu90JEm52lefbn',
+    'redirect'      => 'http://localhost:8000/login/google/callback',
+    ],
 ];

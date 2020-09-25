@@ -43,6 +43,10 @@
 						<a href="http://localhost:8000/login/github/" class="btn-login-with bg2">
 							<i class="fa fa-github"></i>
 							Login with Github
+						</a><br>
+						<a href="http://localhost:8000/login/google/" class="btn-login-with bg2 m-b-10">
+							<i class="fa fa-google"></i>
+							Login with Google
 						</a>
 						<!-- <a href="#" class="btn-login-with bg1 m-b-10">
 							<i class="fa fa-facebook-official"></i>
