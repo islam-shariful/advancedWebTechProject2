@@ -19,7 +19,10 @@ class LoginController extends Controller
       $userInfo = $login->where('user_id', $request->username)
                         ->get();
       if($userInfo[0]->userpassword == $request->password){
+        // session set
         $request->session()->put('username', $request->username);
+        $request->session()->put('type', $userInfo[0]->usertype);
+
         return redirect('teacher1');
       }else{
         return redirect('login');

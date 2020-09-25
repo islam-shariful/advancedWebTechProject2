@@ -34,7 +34,7 @@ Route::get('login/github', 'LoginController@redirectToProvider');
 Route::get('login/github/callback', 'LoginController@handleProviderCallback');
 
 Route::middleware(['sess'])->group(function(){
-  //Teacher routes start here. [middlewares->(session)]
+  //Teacher routes start here. ##middleware->(session)##
   Route::GET('/teacher1', 'TeacherController@index');
   Route::GET('/teacher/index5', 'TeacherController@index');
   Route::GET('/teacher/teacher-profile', 'TeacherController@teacherProfile');
@@ -47,8 +47,11 @@ Route::middleware(['sess'])->group(function(){
   Route::GET('/teacher/exam-grade', 'TeacherController@examGrade');
   Route::POST('/teacher/exam-grade', 'TeacherController@examGradeAdd');
   Route::POST('/teacher/exam-gradeSearch', 'TeacherController@examGradeSearch');
+  ##middleware->(typeCheck)##
+  Route::middleware(['type'])->group(function(){
   Route::GET('/teacher/exam-grade/edit/{result_id}', 'TeacherController@examGradeEdit');
   Route::POST('/teacher/exam-grade/edit/{result_id}', 'TeacherController@examGradeModify');
+  });
   Route::GET('/teacher/grade-sheet', 'TeacherController@gradeSheet');
   Route::POST('/teacher/grade-sheet', 'TeacherController@gradeSheetSearch');
   Route::GET('/teacher/grade-sheetPDF', 'TeacherController@gradeSheetPDF');

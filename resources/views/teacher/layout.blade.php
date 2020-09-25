@@ -115,7 +115,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <div class="item-header">
-                  <h6 class="item-title">Steven Zone</h6>
+                  <h6 class="item-title">Teacher</h6>
                 </div>
                 <div class="item-content">
                   <ul class="settings-list">
@@ -124,10 +124,10 @@
                         ><i class="flaticon-user"></i>My Profile</a
                       >
                     </li>
-                    <li>
+                    <!-- <li>
                       <a href="#"><i class="flaticon-list"></i>Task</a>
                     </li>
-                    <!-- <li>
+                    <li>
                       <a href="#"
                         ><i
                           class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"
