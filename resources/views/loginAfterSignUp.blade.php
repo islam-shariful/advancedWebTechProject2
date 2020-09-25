@@ -32,7 +32,8 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-90 p-b-30">
-				<form method='POST' class="login100-form validate-form">
+				<!-- Form Start -->
+				<form action='/login' method='POST' class="login100-form validate-form">
 					@csrf
 					<span class="login100-form-title p-b-40">
 						Login
@@ -59,20 +60,20 @@
 							Login with Username
 						</span>
 					</div>
-
+					<!-- Username -->
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username" value="{{$username}}">
 						<span class="focus-input100"></span>
 					</div>
-
+					<!-- Password -->
 					<div class="wrap-input100 validate-input m-b-20" data-validate = "Please enter password">
 						<span class="btn-show-pass">
 							<i class="fa fa fa-eye"></i>
 						</span>
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password" value="{{$password}}">
 						<span class="focus-input100"></span>
 					</div>
-
+					<!-- Login -->
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
@@ -90,6 +91,7 @@
 					</div> -->
 
 				</form>
+				<!-- Form End -->
 			</div>
 		</div>
 	</div>

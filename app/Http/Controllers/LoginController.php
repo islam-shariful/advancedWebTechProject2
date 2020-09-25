@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Teacher;
+use App\Login;
 
 class LoginController extends Controller
 {
+    // '/login' 'GET'
     public function index(Request $request){
         return view('login');
     }
+    // '/login' 'POST'
     public function validation(Request $request){
-      if($request->username == $request->password){
+      $login = new Login();
+      $userInfo = $login->where('user_id', $request->username)
+                        ->get();
+      if($userInfo[0]->userpassword == $request->password){
         $request->session()->put('username', $request->username);
         return redirect('teacher1');
       }else{
@@ -39,8 +45,11 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('github')->user();
 
-        $id = '20-'.mt_rand(8000, 8999).'-03';
+        $randomNumber = mt_rand(8000, 8999);
+        $id = '20-'.$randomNumber.'-03';
+        $pass = 'teacher#'.$randomNumber;
 
+        //teacher table
         $teacher = new Teacher();
         $teacher->teacher_id = $id;
         $teacher->teachername = $user->name;
@@ -57,7 +66,16 @@ class LoginController extends Controller
         $teacher->subject_id = 00;
         $teacher->save();
 
-        return '<h3>Your User_ID: '.$id.' and Password: '.$id. ' <a href="http://localhost:8000/login">Login</a></h3>';
+        //login table
+        $login = new Login();
+        $login->user_id = $id;
+        $login->userpassword = $pass;
+        $login->usertype = 'teacher';
+        $login->save();
+
+
+        //return '<h3>Your User_ID: '.$id.' and Password: '.$id. ' <a href="http://localhost:8000/login">Login</a></h3>';
+        return view('loginAfterSignUp')->with('username', $id)->with('password', $pass);
     }
     //Socialite End
 }
